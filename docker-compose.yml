@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    restart: unless-stopped
+
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - rabbitmq
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      RABBIT_URL: amqp://guest:guest@rabbitmq:5672/
+    volumes:
+      - ./users.db:/app/users.db   # для сохранения БД между перезапусками
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile(worker)
+    depends_on:
+      - rabbitmq
+      - redis
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      RABBIT_URL: amqp://guest:guest@rabbitmq:5672/
+    volumes:
+      - ./users.db:/app/users.db   # для доступа к БД, если нужно
+    restart: unless-stopped
