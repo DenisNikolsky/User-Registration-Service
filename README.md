@@ -1,7 +1,5 @@
 # 📦 User Registration Service with Async API, Caching & Message Queues
 
-Этот проект - учебный бэкенд-сервис на **FastAPI**, демонстрирующий современные подходы к разработке высоконагруженных систем:
-
 - Асинхронное REST API с валидацией данных
 - Хеширование паролей (bcrypt)
 - Постоянное хранение в SQLite (aiosqlite)
