@@ -1,0 +1,7 @@
+fastapi[standard]
+uvicorn
+bcrypt
+aiosqlite
+redis
+aio-pika
+prometheus-fastapi-instrumentator

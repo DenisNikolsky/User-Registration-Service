@@ -1,0 +1,40 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+{
+  "manifestVersion": "2.0.0",
+  "signatureType": "grafana",
+  "signedByOrg": "grafana",
+  "signedByOrgName": "Grafana Labs",
+  "plugin": "influxdb",
+  "version": "13.1.3",
+  "time": 1788994184448,
+  "keyId": "7e4d0c6a708866e7",
+  "files": {
+    "sql-query-editor.js.map": "d938c42d796d5a70eb4f021f8c1a210b137ab53e3d2309daabda013e75b3883c",
+    "LICENSE": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+    "query_help.md": "9e1901b0e59b0bee6b09d1956e54cfd3ebd49ed5794f52868cfc84d9eff177a2",
+    "CHANGELOG.md": "22838e9ed4253fb22f66687b515dab843a71b7b5c902e9758b6a8604cbf38004",
+    "156.js.map": "0222ddac91cc85b6778b0c26868f3ed53b02bbade9d5904fda25af06c83c66af",
+    "plugin.json": "ef198b3467dd7be256a517e9cca9ca94e6dc8f950707061e59e9db273cc7edb1",
+    "img/influxdb_logo.svg": "1398a1b949f402d17b11547710f2a9886f833a17cc64bf1a1536c0c463b4e489",
+    "module.js.LICENSE.txt": "5f8c7a54980853e89db8f42f29cf29c65704398d93e72eeddc2bad0b21813c62",
+    "156.js": "99d2e4693ebafc54079987726c9c18909d847f6194f3ecc878d80b2c44049e6b",
+    "go_plugin_build_manifest": "da4fa65fde771d522cb9b1aeb54b47431a686769fff9df2464566dccbae64614",
+    "sql-query-editor.js": "72be6e3f220528cb81e60fb50facfedabb31d4f94048c9cfc46b44ba53231b44",
+    "README.md": "b09743842a186a9d3d4170a3b60afa607492eb6491936763ffcc3ca6e8177a3b",
+    "module.js.map": "a7c0e69de5f9e45e7ab88f652531fd289da409955b6e5c7e8784b3ef55358200",
+    "module.js": "f27739dd9844b87a7cbec954f27a0bdea7d416afa066a65c2405d7771fa7dcf5",
+    "gpx_grafana_influxdb_datasource_linux_amd64": "b3eb7b16520ef45d66ffe58c2ece72b6d155f67616abe2746685c4a2353fa524"
+  }
+}
+-----BEGIN PGP SIGNATURE-----
+
+wsA+BAETCgBtBYJqoeKICRB+TQxqcIhm50UUAAAAAAAcACBzYWx0QG5vdGF0
+aW9ucy5vcGVucGdwanMub3JnoIcG0rfnwikahUqT5ZHyWZMI+sCz/R0WI28V
+8TmG0moWIQTzOyW2kQdOhGNlcPN+TQxqcIhm5wAAmjICCQHcNTtoSbzGilPM
+F14b/bnAjBFBHVdCX/SBaFbS12VmFn4D0icGHkYos6RL8yVcg8FBrG0G90+/
+6J6qzJ7lCR0hAAIIzqENswqEla3heN9yLUhsLRxyoVtK2Z3yfWKYvfWittut
+EhEAWGKFnLT1wX5vKUsZLeIMnIAJJmMXWjajzW2kV5Y=
+=BgWS
+-----END PGP SIGNATURE-----
