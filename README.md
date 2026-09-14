@@ -46,6 +46,7 @@
 | Брокер сообщений    | RabbitMQ (aio-pika)               |
 | Контейнеризация     | Docker, docker-compose            |
 | Язык                | Python 3.11+                      |
+| Метрики             | Grafana, Promotheus               |
 
 
 
