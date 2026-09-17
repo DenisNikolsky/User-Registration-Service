@@ -5,3 +5,5 @@ aiosqlite
 redis
 aio-pika
 prometheus-fastapi-instrumentator
+httpx
+faker
