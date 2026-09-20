@@ -19,7 +19,7 @@ async def main():
     connection = await aio_pika.connect_robust(RABBIT_URL)
     async with connection:
         channel = await connection.channel()
-        queue = await channel.declare_queue("user_events", durable=True)
+        queue = await channel.declare_queue("user_event", durable=True)
         print("Worker started, waiting for messages...")
         await queue.consume(process_message)
         await asyncio.Future()

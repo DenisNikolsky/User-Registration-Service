@@ -9,7 +9,7 @@ from random import randint
 
 alphabet = string.ascii_letters + string.digits
 fake = Faker()
-client = httpx.Client()
+client = httpx.Client(timeout=15)
 
 async def send_request(client):
     username = fake.user_name()
