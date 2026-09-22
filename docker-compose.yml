@@ -2,14 +2,14 @@ services:
   redis:
     image: redis:7-alpine
     ports:
-      - "6379:6379"
+      - 6379:6379
     restart: unless-stopped
 
   rabbitmq:
     image: rabbitmq:3-management-alpine
     ports:
-      - "5672:5672"
-      - "15672:15672"
+      - 5672:5672
+      - 15672:15672
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
@@ -18,7 +18,7 @@ services:
   app:
     build: .
     ports:
-      - "8000:8000"
+      - 8000:8000
     depends_on:
       - redis
       - rabbitmq
@@ -61,6 +61,14 @@ services:
       - 3001:3000
     volumes:
       - grafana_data:/var/lib/grafana
+
+  loki:
+    image: grafana/loki:latest
+    ports:
+      - 3100:3100
+    volumes:
+      - ./loki/loki-config.yml:/etc/loki/local-config.yaml
+    command: -config.file=/etc/loki/local-config.yaml
 
 volumes:
   prometheus_data:

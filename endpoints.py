@@ -8,6 +8,7 @@ from typing import List
 from cache import delete_user_from_cache
 from asyncio import sleep
 from load_service import generate_load
+from logger import logger
 
 def endpoints_register(app: FastAPI):
     @app.get("/")
@@ -52,6 +53,7 @@ def endpoints_register(app: FastAPI):
 
     @app.get("/test/error")
     async def raise_error_test():
+        logger.error("Test error")
         raise HTTPException(status_code=500, detail="Add error message")
 
     @app.get("/test/delay")
