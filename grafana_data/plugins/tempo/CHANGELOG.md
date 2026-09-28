@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.2.2
+
+- Fix security vulnerabilities (CVE-2026-73088, CVE-2026-73089, CVE-2026-75899, CVE-2026-75931, CVE-2026-75975, CVE-2026-76172, CVE-2026-84375)
+
 ## 13.2.1
 
 - Dependency updates ([#226](https://github.com/grafana/grafana-tempo-datasource/pull/226))

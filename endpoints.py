@@ -9,6 +9,10 @@ from cache import delete_user_from_cache
 from asyncio import sleep
 from load_service import generate_load
 from logger import logger
+from opentelemetry import trace
+from opentelemetry.trace.status import StatusCode
+
+tracer = trace.get_tracer(__name__)
 
 def endpoints_register(app: FastAPI):
     @app.get("/")
@@ -58,7 +62,13 @@ def endpoints_register(app: FastAPI):
 
     @app.get("/test/delay")
     async def delay_test():
-        await sleep(3)
+        logger.info("Начало обработки эндпоинта задержки")
+
+        with tracer.start_as_current_span("slow-dependency") as span:
+            span.set_attribute("delay.duration_seconds", 3)
+            await sleep(3)
+
+        logger.info("Задержка успешно отработана")
         return {"message": "Delay test",
                 "Status": "Done"}
 

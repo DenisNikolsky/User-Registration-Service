@@ -1,0 +1,8 @@
+grafana_data/
+prometheus_data/
+postgres_data/
+loki/
+promtail/
+__pycache__/
+*.db
+.git

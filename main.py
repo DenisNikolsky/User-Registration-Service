@@ -4,6 +4,7 @@ from endpoints import endpoints_register
 from db import create_db
 from contextlib import asynccontextmanager
 from prometheus_fastapi_instrumentator import Instrumentator
+
 from opentelemetry import trace
 from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace import TracerProvider
@@ -14,7 +15,7 @@ from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 
 @asynccontextmanager
 async def main(app: FastAPI):
-    await create_db()вщсл
+    await create_db()
     yield
 
 app = FastAPI(lifespan=main)

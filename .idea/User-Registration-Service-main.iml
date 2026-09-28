@@ -3,6 +3,10 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/grafana_data/csv" />
+      <excludeFolder url="file://$MODULE_DIR$/grafana_data/pdf" />
+      <excludeFolder url="file://$MODULE_DIR$/grafana_data/png" />
+      <excludeFolder url="file://$MODULE_DIR$/grafana_data/unified-search" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.14 (User-Registration-Service-main)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

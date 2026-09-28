@@ -14,8 +14,8 @@
     },
     "info": {
         "description": "Data source for InfluxDB, an open source time series database",
-        "version": "13.1.4",
-        "updated": "2026-09-21",
+        "version": "13.1.5",
+        "updated": "2026-09-24",
         "author": {
             "name": "Grafana Labs",
             "url": "https://grafana.com"
