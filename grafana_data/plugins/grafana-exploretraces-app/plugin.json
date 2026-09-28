@@ -13,7 +13,11 @@
             "app",
             "tempo",
             "traces",
-            "explore"
+            "explore",
+            "drilldown",
+            "drill",
+            "down",
+            "drill-down"
         ],
         "description": "Use Rate, Errors, and Duration (RED) metrics derived from traces to investigate errors within complex distributed systems.",
         "author": {
@@ -37,8 +41,8 @@
                 "path": "img/errors-root-cause.png"
             }
         ],
-        "version": "2.2.0",
-        "updated": "2026-08-25",
+        "version": "2.2.1",
+        "updated": "2026-09-22",
         "links": [
             {
                 "name": "GitHub",
@@ -53,7 +57,7 @@
     "includes": [
         {
             "type": "page",
-            "name": "Explore",
+            "name": "Grafana Traces Drilldown",
             "path": "/a/grafana-exploretraces-app/",
             "action": "datasources:explore",
             "addToNav": true,
