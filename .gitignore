@@ -6,3 +6,5 @@ promtail/
 __pycache__/
 *.db
 .git
+README_lab.md
+Screenshots/

@@ -41,26 +41,65 @@ services:
       REDIS_URL: redis://redis:6379/0
       RABBIT_URL: amqp://guest:guest@rabbitmq:5672/
     volumes:
-      - sqlite_data:/app  # Шарим тот же волум с БД для воркера
+      - sqlite_data:/app
     restart: unless-stopped
 
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:latest
     container_name: prometheus
     ports:
       - 9090:9090
     volumes:
-      - ./prometheus_data/prometheus.yml:/etc/prometheus/prometheus.yml
+      # Монтируем вашу ЛОКАЛЬНУЮ папку в выделенный путь внутри контейнера
+      - ./prometheus_data:/etc/prometheus_custom
     command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
+      # Указываем Прометею читать конфиг из этой кастомной папки
+      - '--config.file=/etc/prometheus_custom/prometheus.yml'
+      # Сохраняем системные библиотеки, чтобы веб-интерфейс работал штатно
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    depends_on:
+      - alertmanager
+    restart: unless-stopped
+
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: alertmanager
+    ports:
+      - 9093:9093
+    volumes:
+      # Монтируем вашу ЛОКАЛЬНУЮ папку для Alertmanager
+      - ./alertmanager_data:/etc/alertmanager_custom
+    command:
+      - '--config.file=/etc/alertmanager_custom/alertmanager.yml'
+    restart: unless-stopped
+
+  alert-logger:
+    image: python:3.11-slim
+    container_name: alert-logger
+    command: >
+      python -c "
+      from http.server import BaseHTTPRequestHandler, HTTPServer;
+      import sys;
+      class H(BaseHTTPRequestHandler):
+          def do_POST(self):
+              content_length = int(self.headers['Content-Length']);
+              print('=== ALERT RECEIVED ===\n', self.rfile.read(content_length).decode(), flush=True);
+              self.send_response(200); self.end_headers()
+      HTTPServer(('0.0.0.0', 5000), H).serve_forever()
+      "
+    ports:
+      - 5005:5000
+    restart: unless-stopped
 
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:latest
     container_name: grafana
     ports:
       - 3001:3000
     volumes:
       - grafana_data:/var/lib/grafana
+    restart: unless-stopped
 
   loki:
     image: grafana/loki:latest
@@ -84,15 +123,11 @@ services:
       - "16686:16686"
       - "4317:4317"
       - "4318:4318"
+    restart: unless-stopped
 
 volumes:
-  sqlite_data:      # Добавили волум для безопасного хранения SQLite базы данных
+  sqlite_data:
   grafana_data:
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: ./grafana_data
 
 networks:
   default:
