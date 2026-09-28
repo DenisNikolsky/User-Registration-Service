@@ -1,4 +1,4 @@
-# 📦 User Registration Service with Async API, Caching & Message Queues
+# User Registration Service with Async API, Caching & Message Queues
 
 - Асинхронное REST API с валидацией данных
 - Хеширование паролей (bcrypt)
@@ -36,16 +36,19 @@
 
 ## Технологический стек
 
-| Компонент           | Технология                        |
-|---------------------|-----------------------------------|
-| Web-фреймворк       | FastAPI (асинхронный)             |
-| Сервер              | Uvicorn                           |
-| База данных         | SQLite (aiosqlite)                |
-| Хеширование         | bcrypt                            |
-| Кэширование         | Redis (redis-py, asyncio)         |
-| Брокер сообщений    | RabbitMQ (aio-pika)               |
-| Контейнеризация     | Docker, docker-compose            |
-| Язык                | Python 3.11+                      |
+| Компонент        | Технология               |
+|------------------|--------------------------|
+| Web-фреймворк    | FastAPI (асинхронный)    |
+| Метрики          | Prometheus, Grafana      |
+| Логи             | Loki, Promtail           |
+| Трейсы           | OpenTelemetry            |
+| Сервер           | Uvicorn                  |
+| База данных      | SQLite (aiosqlite)       |
+| Хеширование      | bcrypt                   |
+| Кэширование      | Redis (redis-py, asyncio)|
+| Брокер сообщений | RabbitMQ (aio-pika)      |
+| Контейнеризация  | Docker, docker-compose   |
+| Язык             | Python 3.11+             |
 
 
 
@@ -73,5 +76,9 @@ API будет доступно на http://localhost:8000
 Swagger-документация – http://localhost:8000/docs
 
 RabbitMQ Management – http://localhost:15672 (логин guest / пароль guest)
+
+Grafana - http://localhost:3000/
+
+Jaeger - http://localhost:16686/
 
 База данных users.db сохраняется в текущей директории, поэтому данные не теряются при перезапуске контейнеров.
